@@ -1,0 +1,8 @@
+#!/bin/sh
+
+docker build -t rcomproxy .
+v=latest
+docker tag rcomproxy:latest zuyong/rcomproxy:${v}
+docker push zuyong/rcomproxy:${v}
+
+docker run -it --name proxy --rm -p 3128:3128 zuyong/rcomproxy
